@@ -79,7 +79,13 @@ class ScheduleController extends Controller
                 foreach ($flavours as $key => $value) {
                     echo $value;
                     $data = [
-                    ['div_id'=> $request->set_id,'cls_id'=> $id, 'user_id'=> $value, 'div_usr_total_match'=> 0, 'div_usr_total_win'=> 0, 'div_usr_total_draw'=> 0, 'div_usr_total_lose'=> 0, 'div_usr_total_point'=> 0],
+                    [
+                        'div_id'=> $request->set_id,
+                        'cls_id'=> $id,
+                        'user_id'=> $value,
+                        'div_usr_total_match'=> 0,
+                        'div_usr_total_win'=> 0, 'div_usr_total_draw'=> 0,
+                        'div_usr_total_lose'=> 0, 'div_usr_total_point'=> 0],
                     ];
                     ClassroomDivisionUser::insert($data); // Eloquent approach
                 }
@@ -588,20 +594,105 @@ class ScheduleController extends Controller
         // }
     }
 
-    public function generate(Request $request,$id){
-        echo $id;
+    function createdivision($id,$division){
+        // กำหนดชื่อ Division
+        $leaguename = array("North Division", "South Division","East Division","West Division","Sun Division","Moon Division","Cloud Division","Star Division","Sky Division");
+        
+        // สร้าง Division
+        for($i=0;$i<$division;$i++){ 
+            try{
+                ClassroomDivision::create([
+                    'cls_id' => $id,
+                    'div_name' => $leaguename[$i],
+                    'div_role' => "",
+                    'div_win' => 3,
+                    'div_draw' => 1,
+                    'div_lose' => 0
+                ]);
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollback();
+                return redirect()->route('schedule.show', ['id' => $id])->with('status', 'Data inserted Failed!!');
+            }
+        }
+    }
 
-        // "week" => "24"
-        // "radio" => "3"
+    function groupingmember($id,$numdivision,$grouptype,$member){     
+        
+        // เลือก Division ที่เพิ่งสร้างล่าสุด
+        $division = ClassroomDivision::where('cls_id', $id)
+        ->orderByDesc('div_id')
+        ->limit($numdivision)
+        ->get();
+
+    
+
+        $division = $division->sort();
+
+        
+        
+     // dd($division);
+    if($grouptype == "3"){
+
+        $member = $member->sortBy('cpu_score', SORT_REGULAR, true);
+
+        DB::beginTransaction();
+        try{
+            //ClassroomDivisionUser::where('div_id',$request->set_id)->delete();
+            $i = $numdivision-1;
+            foreach ($member as $members) {
+                $data = [
+                [
+                    'div_id'=> $division[$i]->div_id,
+                    'cls_id'=> $id,
+                    'user_id'=> $members->id,
+                    'div_usr_total_match'=> 0,
+                    'div_usr_total_win'=> 0, 'div_usr_total_draw'=> 0,
+                    'div_usr_total_lose'=> 0, 'div_usr_total_point'=> 0],
+                ];
+                ClassroomDivisionUser::insert($data); // Eloquent approach
+
+                $i--;
+                
+                if ($i == 0){
+                    $i = $numdivision-1;
+                }
+            }
+            DB::commit();
+            // return redirect()->route('schedule.show', ['id' => $id])->with('status', 'Data inserted sucessfully!!');
+
+            } catch (\Exception $e) {
+                    DB::rollback();
+                    // return redirect()->route('schedule.show', ['id' => $id])->with('status', 'Data inserted Failed!!');
+            }// end catch
+    }
+
+
+    }
+
+    public function generate(Request $request,$id){
+        // หารหัสข้อสอบ
         $pt_id = ClassroomPretest::where('cls_id', $id)->value('pt_id');
         echo $pt_id;
+        
+        // ดึงข้อมูลสมาชิก
         $member = ClassroomPretestUser::where('cls_id',$id)
         ->where('pt_id',$pt_id)
         ->get();
 
+        // นับจำนวนคนใน ลีก
+        $number = ClassroomPretestUser::where('cls_id',$id)
+        ->where('pt_id',$pt_id)
+        ->count();
 
-        dd($member);
-       // dd($member->score);
+        // หาจำนวน ลีก
+        $division = ceil($number / $request->week);
+
+        // เรียก Fx สร้าง Division
+        $this->createdivision($id,$division);
+
+        // เพิ่มสมาชิกลงกลุ่ม
+        $this->groupingmember($id,$division,$request->radio,$member);
 
     }
 }
