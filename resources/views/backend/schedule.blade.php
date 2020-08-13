@@ -456,11 +456,11 @@
                                 </div>
                                 <div class="custom-control custom-radio pt-3">
                                     <input type="radio" id="choice3" name="radio" value ="3" class="custom-control-input" checked>
-                                    <label class="custom-control-label" for="choice3">3. แบบใช้คะแนนทดสอบก่อนเรียน (งูกินหาง) *</label>
+                                    <label class="custom-control-label" for="choice3">3. แบบใช้คะแนนทดสอบก่อนเรียน *</label>
                                 </div>
                                 <div class="custom-control custom-radio pt-3">
                                     <input type="radio" id="choice4" name="radio" value ="4" class="custom-control-input">
-                                    <label class="custom-control-label" for="choice4">4. แบบใช้คะแนนทดสอบก่อนเรียน (ช่วงลำดับชั้น)</label>
+                                    <label class="custom-control-label" for="choice4">4. แบบใช้เวลาการสอบก่อนเรียน</label>
                                 </div>
                             </div>
                         </div>
