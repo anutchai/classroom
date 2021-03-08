@@ -34,7 +34,7 @@
                 <div class="col-lg-10 col-xl-5 mx-auto">
                     <div class="card h-100 border-0  shadow">
                         <div class="arrow-back">
-                            <a href="index.html">
+                            <a href="{{ route('index') }}">
                                 <i class="fas fa-arrow-left fa-lg"></i>
                             </a>
                         </div>
