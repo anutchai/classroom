@@ -15,9 +15,9 @@ class CreateClassroomPrestestUsersTable extends Migration
     {
         Schema::create('classroom_pretest_users', function (Blueprint $table) {
             $table->id('cpu_id');
-            $table->foreignId('cls_id');
-            $table->foreignId('id');
-            $table->foreignId('pt_id');
+            $table->foreignId('cls_id')->nullable()->comment('แหล่งข้อมูลใด');
+            $table->foreignId('id')->nullable()->comment('แหล่งข้อมูลใด');
+            $table->foreignId('pt_id')->nullable()->comment('แหล่งข้อมูลใด');
             $table->integer('cpu_score');
             $table->timestamps();
         });
@@ -30,7 +30,7 @@ class CreateClassroomPrestestUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classroom_prestest_users');
+        Schema::dropIfExists('classroom_pretest_users');
     }
 }
 
