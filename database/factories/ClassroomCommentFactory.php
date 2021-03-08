@@ -11,9 +11,6 @@ $factory->define(ClassroomComment::class, function (Faker $faker) {
         $to = rand(1, 44);
     } while ($from === $to);
 
-
-
-
     return [
         'con_id'=> $from,
         'user_id'=> $to,

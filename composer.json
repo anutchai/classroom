@@ -18,7 +18,9 @@
         "laravel/ui": "^2.0",
         "maatwebsite/excel": "^3.1",
         "pusher/pusher-php-server": "^4.1",
-        "yajra/laravel-datatables-oracle": "^9.9"
+        "yajra/laravel-datatables-oracle": "^9.9",
+        "rackspace/php-opencloud": "dev-master",
+        "ext-bcmath": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\ClassroomComment;
+use Illuminate\Support\Facades\DB;
+
 class CommentController extends Controller
 {
     public function store(Request $request)

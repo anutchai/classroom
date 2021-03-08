@@ -48,7 +48,7 @@ class ClassroomController extends Controller
         ->where('cls_id', $id->cls_id)
         ->first();
 
-        $owner = User::find($classroom->user_id);;
+        $owner = User::find($classroom->user_id);
 
         $userid = auth()->user()->id;
 
@@ -59,9 +59,9 @@ class ClassroomController extends Controller
         $pretest = ClassroomPretest::where('cls_id',$id->cls_id)->get();
 
         $pretest_num = ClassroomPretest::where('cls_id',$id->cls_id)->count();
-        
+
         $fillvalue = ClassroomPretestUser::where('id',$userid)->count();
-        
+
         //dd($fillvalue);
         return view('backend.room',compact('id','member','post','user','owner','pretest','pretest_num','fillvalue'));
 
@@ -100,7 +100,7 @@ class ClassroomController extends Controller
             DB::commit();
             return redirect()->route('classroom.show', ['id' => $id])->with('status', 'Data inserted sucessfully!!');
         } catch (\Exception $e) {
-            return 'Fails';
+            return 'Fails :'.$e;
             DB::rollback();
             return redirect('classroom.show', ['id' => $id])->with('status', 'เพิ่มข้อมูลไม่สำเร็จ');
         }

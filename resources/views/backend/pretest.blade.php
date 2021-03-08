@@ -157,7 +157,7 @@
             </footer>
 
             <!------------------------- Moblie-bar ------------------------->
-            <div class="d-block d-lg-none moblie-bar p-2">
+            {{-- <div class="d-block d-lg-none moblie-bar p-2">
                 <div class="container-fluid text-center">
                     <div class="row row-cols-5">
                         <div class="col">
@@ -192,7 +192,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
         </div>
 

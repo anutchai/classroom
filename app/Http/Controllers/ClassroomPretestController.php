@@ -18,11 +18,10 @@ class ClassroomPretestController extends Controller
     public function show($id){
         // หา User ID
         $users = auth()->user()->id;
- 
+
         // ดึงข้อมูล Pretest มาแสดง
         $pretest = ClassroomPretest::where('cls_id',$id)->get();
 
-     
         foreach ($pretest as $key => $pretests) {
 
             // เช็คว่าสอบได้กี่คะแนน
@@ -38,7 +37,7 @@ class ClassroomPretestController extends Controller
 
         }
 
-        $sumscore = ClassroomPretest::where('cls_id',$id)->sum('pt_number_of_exam');    
+        $sumscore = ClassroomPretest::where('cls_id',$id)->sum('pt_number_of_exam');
 
         $getscore = ClassroomPretestUser::where('cls_id',$id)
         ->where('id',$users)->sum('cpu_score');

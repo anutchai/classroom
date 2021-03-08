@@ -96,6 +96,7 @@
                     </div>
                 </div>
                 @endcan
+
                 <div class="row">
                     <div class="col-xl-10 mx-auto">
                         <div class="accordion d-lg-block d-none" id="accordionPost">
@@ -533,35 +534,40 @@
 
 @section('mobile-bar')
             <!------------------------- Moblie-bar ------------------------->
+
+            <a href="{{route('pretest.show', ['id' => $id->cls_id])}}"> <button class="btn btn-theme moblie-button d-lg-none d-block rounded-circle">
+            <i class="fas fa-pen"></i>
+             </button></a>
+
             <div class="d-block d-lg-none moblie-bar p-2">
                 <div class="container-fluid text-center">
                     <div class="row row-cols-5">
                         <div class="col">
-                            <a class="list-moblie" href="control.html">
+                            <a class="list-moblie" href="{{route('control')}}">
                                 <i class="fas fa-home"></i>
                                 <small class="d-block ">Home</small>
                             </a>
                         </div>
                         <div class="col">
-                            <a href="room.html" class="list-moblie active">
+                            <a href="{{route('classroom.show', ['id' => $id->cls_id])}}" class="list-moblie active">
                                 <i class="fas fa-graduation-cap"></i>
                                 <small class="d-block">Strem</small>
                             </a>
                         </div>
                         <div class="col">
-                            <a href="schedule.html" class="list-moblie">
+                            <a href="{{route('schedule.show', ['id' => $id->cls_id])}}" class="list-moblie">
                                 <i class="fas fa-list-ul"></i>
                                 <small class="d-block">Schedule</small>
                             </a>
                         </div>
                         <div class="col">
-                            <a href="leaderboard.html" class="list-moblie">
+                            <a href="{{route('leaderboard.show', ['id' => $id->cls_id])}}" class="list-moblie">
                                 <i class="fas fa-chart-line"></i>
                                 <small class="d-block">Leader</small>
                             </a>
                         </div>
                         <div class="col">
-                            <a href="pairing.html" class="list-moblie">
+                            <a href="{{route('pairing.show', ['id' => $id->cls_id])}}" class="list-moblie">
                                 <i class="far fa-heart"></i>
                                 <small class="d-block">Paring</small>
                             </a>
