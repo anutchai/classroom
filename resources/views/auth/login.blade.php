@@ -27,7 +27,6 @@
 
 <body>
 
-
     <section id="sign-in">
         <img class="h-rectangle" src="{{ asset('images/Rectangle/n-1.png')}}" alt="heading-Rectangle">
         <div class="container">
@@ -165,10 +164,6 @@
             </div>
         </div>
     </section>
-
-
-
-
 
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('lib/jquery/jquery.min.js')}}"></script>
