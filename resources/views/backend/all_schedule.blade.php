@@ -2,22 +2,22 @@
 
 @section('nav')
     <li class="nav-item mr-3 pt-1">
-        <a class="nav-link active" href="{{ route('classroom.show', ['id' => $classroom]) }}">
+        <a class="nav-link active" href="{{ route('classroom.show', ['id' => $id]) }}">
             <i class="fas fa-graduation-cap pr-2"></i>
             Steam</a>
     </li>
     <li class="nav-item mr-3 pt-1">
-        <a class="nav-link" href="{{ route('schedule.show', ['id' => $classroom]) }}">
+        <a class="nav-link" href="{{ route('schedule.show', ['id' => $id]) }}">
             <i class="fas fa-list-ul pr-2"></i>
             Schedule</a>
     </li>
     <li class="nav-item mr-3 pt-1">
-        <a class="nav-link" href="{{ route('leaderboard.show', ['id' => $classroom]) }}">
+        <a class="nav-link" href="{{ route('leaderboard.show', ['id' => $id]) }}">
             <i class="fas fa-chart-line pr-2"></i>
             LeaderBoard</a>
     </li>
     <li class="nav-item mr-3 pt-1">
-        <a class="nav-link" href="{{ route('pairing.show', ['id' => $classroom]) }}">
+        <a class="nav-link" href="{{ route('pairing.show', ['id' => $id]) }}">
             <i class="far fa-heart pr-2"></i>
             Paring</a>
     </li>
@@ -33,7 +33,7 @@
                 @can ('update', $owner->profile)
                 <a href="#">
 
-                    <a class="m-0" href="{{ route('schedule.show', ['id' => $classroom]) }}">
+                    <a class="m-0" href="{{ route('schedule.show', ['id' => $id]) }}">
                         <i class="fas fa-arrow-left text-white fa-sm pr-2" style="font-size: 24px;"></i>
                         </a>
 

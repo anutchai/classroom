@@ -20,6 +20,8 @@ class ScheduleController extends Controller
 {
     public function index($id)
     {
+
+        // dd($id);
         $userid = auth()->user()->id;
 
         $classroom = ClassroomDivision::find($id);
@@ -66,7 +68,7 @@ class ScheduleController extends Controller
         }
 
 
-        // dd($id);
+        // dd($classroom->cls);
 
         return view('backend.all_schedule',compact('id','match','classroom','owner','countmember'));
     }
