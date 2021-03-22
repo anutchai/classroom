@@ -24,7 +24,10 @@ class ScheduleController extends Controller
         // dd($id);
         $userid = auth()->user()->id;
 
+
         $classroom = ClassroomDivision::find($id);
+
+        $cls = $classroom->cls_id;
 
         $owner = Classroom::find($classroom->cls_id);
 
@@ -70,7 +73,7 @@ class ScheduleController extends Controller
 
         // dd($classroom->cls);
 
-        return view('backend.all_schedule',compact('id','match','classroom','owner','countmember'));
+        return view('backend.all_schedule',compact('id','match','classroom','owner','countmember','cls'));
     }
 
     public function create(Request $request, $id)
