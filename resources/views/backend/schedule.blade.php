@@ -71,7 +71,7 @@
             <div class="row">
                 {{-- Create Schedule --}}
                 <div class="col-xl-10 mx-auto">
-                    <div class="accordion d-lg-block d-none" id="accordionPost">
+                    <div class="accordion d-lg-block" id="accordionPost">
                         <div class="card mb-4 border-0 shadow-theme card-radius">
 
                             @can ('update', $owner->profile)

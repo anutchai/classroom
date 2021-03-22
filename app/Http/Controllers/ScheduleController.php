@@ -65,6 +65,9 @@ class ScheduleController extends Controller
             $matchs->com_date = $createdate->isoFormat('LL');
         }
 
+
+        // dd($id);
+
         return view('backend.all_schedule',compact('id','match','classroom','owner','countmember'));
     }
 
@@ -597,9 +600,9 @@ class ScheduleController extends Controller
     private function createdivision($id,$division){
         // กำหนดชื่อ Division
         $leaguename = array("North Division", "South Division","East Division","West Division","Sun Division","Moon Division","Cloud Division","Star Division","Sky Division");
-        
+
         // สร้าง Division
-        for($i=0;$i<$division;$i++){ 
+        for($i=0;$i<$division;$i++){
             try{
                 ClassroomDivision::create([
                     'cls_id' => $id,
@@ -621,22 +624,22 @@ class ScheduleController extends Controller
         if($grouptype == "1"){
             // 1. แบบสุ่ม (มันสุ่มตั้งแต่ตอน Select แล้ว)
         }
-        if($grouptype == "2"){    
+        if($grouptype == "2"){
             // 2. แบบสลับเลขลำดับคู่คี่
             $member = $member->sortBy('id');
         }
-        if($grouptype == "3"){          
+        if($grouptype == "3"){
             // 3. แบบใช้คะแนนทดสอบก่อนเรียน *
             $member = $member->sortBy('cpu_score');
         }
         if($grouptype == "4"){
-            // 4. แบบใช้เวลาการทำทดสอบก่อนเรียน 
+            // 4. แบบใช้เวลาการทำทดสอบก่อนเรียน
             $member = $member->sortBy('created_at');
         }
     }
 
-    private function groupingmember($id,$numdivision,$grouptype,$member){     
-        
+    private function groupingmember($id,$numdivision,$grouptype,$member){
+
         // เลือก Division ที่เพิ่งสร้างล่าสุด
         $division = ClassroomDivision::where('cls_id', $id)
         ->orderByDesc('div_id')
@@ -656,7 +659,7 @@ class ScheduleController extends Controller
             // ให้ i เท่ากับ จำนวน division - ลบ เพื่อให้มันตรงกับ อาเรย์
             $i = 0;
             foreach ($member as $members) {
-            
+
                 $data = [
                 [
                     'div_id'=> $division[$i]->div_id,
@@ -675,12 +678,12 @@ class ScheduleController extends Controller
             }
             DB::commit();
             // return redirect()->route('schedule.show', ['id' => $id])->with('status', 'Data inserted sucessfully!!');
-            
+
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->route('schedule.show', ['id' => $id])->with('status', 'Data inserted Failed!!');
         }// end catch
-                
+
     }
 
     public function generate(Request $request,$id){
@@ -689,13 +692,13 @@ class ScheduleController extends Controller
         DB::beginTransaction();
         try{
             ClassroomDivisionUser::where('cls_id','=',$id)->delete();
-            DB::commit();         
+            DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
         }
         try{
             ClassroomDivision::where('cls_id','=',$id)->delete();
-            DB::commit();         
+            DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
         }
@@ -703,7 +706,7 @@ class ScheduleController extends Controller
 
         // หารหัสข้อสอบ
         $pt_id = ClassroomPretest::where('cls_id', $id)->value('pt_id');
-        
+
         // ดึงข้อมูลสมาชิก
         $member = ClassroomPretestUser::where('cls_id',$id)
         ->where('pt_id',$pt_id)
@@ -723,7 +726,7 @@ class ScheduleController extends Controller
             // ถ้าคนน้อยกว่าจำนวนสัปดาห์ ก็กำหนดให้เท่ากับ 1
             $division = 1;
         }
-        
+
         // เรียก Fx สร้าง Division
         $this->createdivision($id,$division);
 

@@ -45,7 +45,7 @@
                         <h1 class="display-4 font-weight-light">{{$id->cls_name}}</h1>
                         <h4 class="card-text">{{$id->cls_level}}</h4>
                         <h5 class="card-text code">CODE : {{$id->cls_code}}</h5>
-                        <h5 class="card-text teacher d-lg-block d-none">
+                        <h5 class="card-text teacher d-lg-block">
                             @if(Auth::user()->profile->prf_img)
                             <img src="{{asset('storage')}}/{{Auth::user()->profile->prf_img}}"
                             class="avatar border border-light">
@@ -99,7 +99,7 @@
 
                 <div class="row">
                     <div class="col-xl-10 mx-auto">
-                        <div class="accordion d-lg-block d-none" id="accordionPost">
+                        <div class="accordion d-lg-block" id="accordionPost">
                             <div class="card mb-4 border-0 shadow-theme card-radius">
                                 <div class="card-header bg-white" id="Postheading">
                                     <h5 class="mb-0">
@@ -213,7 +213,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 col-xl-3 d-none d-lg-block">
+            <div class="col-lg-4 col-xl-3 d-lg-block">
                 <div class="card border-0 shadow-theme mb-4">
                     <div class="card-header bg-white">
                         <h4 class="m-0 text-theme">แบบทดสอบ</h4>

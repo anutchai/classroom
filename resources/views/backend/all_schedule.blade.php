@@ -2,22 +2,22 @@
 
 @section('nav')
     <li class="nav-item mr-3 pt-1">
-        <a class="nav-link active" href="{{ route('classroom.show', ['id' => $classroom->cls_id]) }}">
+        <a class="nav-link active" href="{{ route('classroom.show', ['id' => $classroom]) }}">
             <i class="fas fa-graduation-cap pr-2"></i>
             Steam</a>
     </li>
     <li class="nav-item mr-3 pt-1">
-        <a class="nav-link" href="{{ route('schedule.show', ['id' => $classroom->cls_id]) }}">
+        <a class="nav-link" href="{{ route('schedule.show', ['id' => $classroom]) }}">
             <i class="fas fa-list-ul pr-2"></i>
             Schedule</a>
     </li>
     <li class="nav-item mr-3 pt-1">
-        <a class="nav-link" href="{{ route('leaderboard.show', ['id' => $classroom->cls_id]) }}">
+        <a class="nav-link" href="{{ route('leaderboard.show', ['id' => $classroom]) }}">
             <i class="fas fa-chart-line pr-2"></i>
             LeaderBoard</a>
     </li>
     <li class="nav-item mr-3 pt-1">
-        <a class="nav-link" href="{{ route('pairing.show', ['id' => $classroom->cls_id]) }}">
+        <a class="nav-link" href="{{ route('pairing.show', ['id' => $classroom]) }}">
             <i class="far fa-heart pr-2"></i>
             Paring</a>
     </li>
@@ -33,7 +33,7 @@
                 @can ('update', $owner->profile)
                 <a href="#">
 
-                    <a class="m-0" href="{{ route('schedule.show', ['id' => $classroom->cls_id]) }}">
+                    <a class="m-0" href="{{ route('schedule.show', ['id' => $classroom]) }}">
                         <i class="fas fa-arrow-left text-white fa-sm pr-2" style="font-size: 24px;"></i>
                         </a>
 
@@ -206,25 +206,25 @@
                     </a>
                 </div>
                 <div class="col">
-                    <a href="{{route('classroom.show', ['id' => $id->cls_id])}}" class="list-moblie active">
+                    <a href="{{route('classroom.show', ['id' => $id])}}" class="list-moblie active">
                         <i class="fas fa-graduation-cap"></i>
                         <small class="d-block">Strem</small>
                     </a>
                 </div>
                 <div class="col">
-                    <a href="{{route('schedule.show', ['id' => $id->cls_id])}}" class="list-moblie">
+                    <a href="{{route('schedule.show', ['id' => $id])}}" class="list-moblie">
                         <i class="fas fa-list-ul"></i>
                         <small class="d-block">Schedule</small>
                     </a>
                 </div>
                 <div class="col">
-                    <a href="{{route('leaderboard.show', ['id' => $id->cls_id])}}" class="list-moblie">
+                    <a href="{{route('leaderboard.show', ['id' => $id])}}" class="list-moblie">
                         <i class="fas fa-chart-line"></i>
                         <small class="d-block">Leader</small>
                     </a>
                 </div>
                 <div class="col">
-                    <a href="{{route('pairing.show', ['id' => $id->cls_id])}}" class="list-moblie">
+                    <a href="{{route('pairing.show', ['id' => $id])}}" class="list-moblie">
                         <i class="far fa-heart"></i>
                         <small class="d-block">Paring</small>
                     </a>
