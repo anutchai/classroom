@@ -57,7 +57,7 @@
                             </div>
                             @if($countmember > 0)
                                 <div class="col-md-2 text-right pt-3">
-                                    <a href="{{route('match.createround', ['id' => $cls])}}" class="btn btn-theme btn-block btn-sm">Matching</a>
+                                    <a href="{{route('match.createround', ['id' => $id])}}" class="btn btn-theme btn-block btn-sm">Matching</a>
                                 </div>
                             @else
                             <div class="pt-3">
