@@ -5,9 +5,11 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4">
+
             <div class="user-wrapper">
                 <ul class="users">
-                    @foreach($users as $user)
+
+                    @forelse ($users as $user)
                         @if($user->profile->match == "pair")
                             <li class="user" id="{{ $user->profile->user_id }}">
 
@@ -34,7 +36,12 @@
                                 </div>
                             </li>
                         @endif
-                    @endforeach
+                    @empty
+                        <li class="user d-flex justify-content-center ">
+                            <div class="p-5"><span class="text-grey-500">--ไม่พบข้อมูล--</span></div>
+                        </li>
+                    @endforelse
+
                 </ul>
             </div>
         </div>

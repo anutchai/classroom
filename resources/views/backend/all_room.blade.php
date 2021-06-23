@@ -117,12 +117,19 @@
     $(document).ready(function() {
         $('#change_name').submit(function(e) {
 
+
+
             e.preventDefault();
             var formData = new FormData(this);
             formData.append('user_id', '{{Auth::user()->profile->user_id}}');
             formData.append('con_id', '{{$content->con_id}}');
+
+            // alert(55555);
             $.ajax({
                 url: "{{ route('comment.store') }}",
+                headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
                 method: "POST",
                 data: formData,
                 dataType: "JSON",

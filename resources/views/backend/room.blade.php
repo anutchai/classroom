@@ -241,7 +241,7 @@
 
 
                     <div class="d-block">
-                        <a href="{{route('pretest.show', ['id' => $id->cls_id])}}" class="btn btn-theme btn-block">ดูทั้งหมด</a>
+                        <a href="{{route('pretest.show', ['id' => $id->cls_id])}}" class="btn btn-warning btn-block"><i class="fas fa-plus"></i> ทำแบบทดสอบ</a>
                     </div>
                 </div>
 

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\ClassroomComment;
-use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
 {
@@ -20,15 +19,13 @@ class CommentController extends Controller
                 ]);
                 DB::commit();
 
-
                 // TODO ไว้รับค่า id comment ส่งกลับ
-
 
                 return response()->json($request);
                 //return response()->json(['success' => 'เปลี่ยนข้อมูลสำเร็จ '.now(), 'name' => $request->content], 200);
             } catch (\Exception $e) {
                 DB::rollback();
-                return response()->json(['error' => 'เกิดข้อผิดพลาด '.now()], 500);
+                return response()->json(['error' => 'เกิดข้อผิดพลาด '.now()], 500)->with($request);
             }
         }
     }

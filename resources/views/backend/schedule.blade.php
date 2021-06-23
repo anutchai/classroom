@@ -78,7 +78,7 @@
                             <div class="card-header bg-white" id="Postheading">
                                 <h5 class="mb-0">
                                     <a href="#" class="link_post text-uppercase" data-toggle="collapse" data-target="#Post" aria-expanded="true" aria-controls="Post">
-                                        <i class="far fa-edit"></i> Create Schedule
+                                        <i class="far fa-edit"></i> Create Division
                                     </a>
                                 </h5>
                             </div>
@@ -129,7 +129,7 @@
                     <div class="card mb-4 border-0 shadow-theme card-radius">
                         <div class="card-header bg-blue text-white clearfix">
                             <div class="float-left">
-                                <h4>Schedule</h4>
+                                <h4>Division</h4>
                             </div>
                             <div class="float-right">
                                 <div class="dropdown d-inline dropdown_post">
@@ -148,7 +148,7 @@
                             </div>
                         </div>
                         <div class="card-body" id="item{{$division->div_id}}">
-                            <h4>Division: {{$division->div_name}}</h4>
+                            <h4>{{$division->div_name}}</h4>
                             <ul class="list-group list-group-flush">
                                 @foreach ($division_member as $teammember)
                                     @if($teammember->div_id == $division->div_id)
