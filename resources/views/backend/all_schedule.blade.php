@@ -172,7 +172,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-theme" id="com_realname1"></span>
                                     </div>
-                                    <input type="number" id="com_scoreuser1" name="com_scoreuser1" min="0" max="20" value="0" class="form-control" placeholder="score" aria-describedby="user-score-1" required>
+                                    <input type="number" id="com_scoreuser1" name="com_scoreuser1" value="0" class="form-control" placeholder="score" aria-describedby="user-score-1" required>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -180,7 +180,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-theme" id="com_realname2"></span>
                                     </div>
-                                    <input type="number" id="com_scoreuser2" name="com_scoreuser2" min="0" max="20" class="form-control" placeholder="score" aria-describedby="user-score-2" required>
+                                    <input type="number" id="com_scoreuser2" name="com_scoreuser2" class="form-control" placeholder="score" aria-describedby="user-score-2" required>
                                 </div>
                             </div>
                         </div>
