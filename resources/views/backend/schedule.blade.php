@@ -158,7 +158,7 @@
                                         @else
                                             <img src="{{asset('images/user.jpg')}}" class="avatar" alt="Avatar">
                                         @endif
-                                        <span class="pl-2">{{$teammember->prf_firstname}} {{$teammember->prf_lastname}}</span>
+                                        <span class="pl-2">{{$teammember->prf_firstname}}</span>
                                     </li>
                                     @endif
                                 @endforeach
